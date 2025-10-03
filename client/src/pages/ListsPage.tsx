@@ -36,7 +36,6 @@ export default function ListsPage() {
   };
 
   const uncheckedItems = items.filter((item) => !item.checked);
-  const checkedItems = items.filter((item) => item.checked);
 
   return (
     <div className="min-h-screen bg-background pb-20">
@@ -96,44 +95,16 @@ export default function ListsPage() {
 
         <div className="p-4">
           {items.length > 0 ? (
-            <div className="space-y-6">
-              {uncheckedItems.length > 0 && (
-                <div>
-                  <h3 className="text-sm font-semibold text-muted-foreground mb-2 px-4">
-                    TO BUY ({uncheckedItems.length})
-                  </h3>
-                  <div className="space-y-1">
-                    {uncheckedItems.map((item) => (
-                      <GroceryListItem
-                        key={item.id}
-                        {...item}
-                        onCheckedChange={(checked) =>
-                          handleToggleItem(item.id, checked)
-                        }
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {checkedItems.length > 0 && (
-                <div>
-                  <h3 className="text-sm font-semibold text-muted-foreground mb-2 px-4">
-                    COMPLETED ({checkedItems.length})
-                  </h3>
-                  <div className="space-y-1">
-                    {checkedItems.map((item) => (
-                      <GroceryListItem
-                        key={item.id}
-                        {...item}
-                        onCheckedChange={(checked) =>
-                          handleToggleItem(item.id, checked)
-                        }
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
+            <div className="space-y-1">
+              {items.map((item) => (
+                <GroceryListItem
+                  key={item.id}
+                  {...item}
+                  onCheckedChange={(checked) =>
+                    handleToggleItem(item.id, checked)
+                  }
+                />
+              ))}
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-16 text-center">
